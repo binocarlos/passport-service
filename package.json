@@ -1,14 +1,17 @@
 {
   "name": "passport-service",
-  "private": true,
   "version": "1.0.0",
   "description": "A HTTP auth service using passport and connecting to Mongo",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/binocarlos/passport-service.git"
+  },
+  "author": "Kai Davenport",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "~1.14.1",
     "connect-mongo": "~0.8.2",
