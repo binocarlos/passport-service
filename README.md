@@ -48,11 +48,23 @@ Mongo DB | --mongo-db | MONGO_SERVICE_DB | mongodb | | auth
 
 #### docker container
 
+First run a basic Mongo container:
+
 ```bash
 $ docker run -d \
-  -p 80 \
-  -e HOSTNAME=myapp.local \
-  -e MONGO_SERVICE_HOST=mongo.local
+  --name mongo \
+  mongo
+```
+
+Then link the auth container to it:
+
+```bash
+$ docker run -d \
+  -p 80:80 \
+  --link mongo:mongo \
+  -e HOSTNAME=172.17.1.168 \
+  -e MONGO_SERVICE_HOST=mongo \
+  binocarlos/passport-service
 ```
 
 #### stand alone node.js application
