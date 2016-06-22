@@ -27,7 +27,7 @@ You can run the auth service in a few different ways:
 
  * Docker container
  * stand alone node.js application
- * use in another node.js application
+ * use in another node.js application (tbc)
 
 ## options
 The following table shows the command-line flag, environment variable and config property for each setting of the auth service.
@@ -96,6 +96,8 @@ var server = http.createServer(function(req, res){
   }
 })
 ```
+
+NOTE - this needs to be completed still
 
 ## routes
 
