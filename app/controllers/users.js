@@ -73,6 +73,7 @@ exports.status = function (req, res) {
 
     delete(sendProfile.salt)
     delete(sendProfile.hashed_password)
+    delete(sendProfile.authToken)
       
     res.json({
       loggedIn:true,
