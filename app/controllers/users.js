@@ -68,10 +68,15 @@ exports.status = function (req, res) {
   
   loadUser(req.user._id, function(err, profile){
     if(err) return authtools.handleError(res, err)
+
+    var sendProfile = JSON.parse(JSON.stringify(profile))
+
+    delete(sendProfile.salt)
+    delete(sendProfile.hashed_password)
       
     res.json({
       loggedIn:true,
-      user:profile
+      user:sendProfile
     })
 
   })
