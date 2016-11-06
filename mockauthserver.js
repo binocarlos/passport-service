@@ -20,7 +20,7 @@ module.exports = function(opts){
   var registeredUser = null
   var currentUser = null
 
-  router.set('/v1/auth/status', {
+  router.set('/auth/v1/status', {
     GET:function(req, res){
       if(!currentUser) return authtools.handleNoUser(res)
       httpTools.sendJSON(res, {
@@ -30,7 +30,7 @@ module.exports = function(opts){
     }
   })
 
-  router.set('/v1/auth/logout', {
+  router.set('/auth/v1/logout', {
     GET:function(req, res){
       currentUser = null
       res.statusCode = 302
@@ -39,7 +39,7 @@ module.exports = function(opts){
     }
   })
 
-  router.set('/v1/auth/register', {
+  router.set('/auth/v1/register', {
     POST:function(req, res){
       httpTools.pipeJSON(req, function(err, data){
         if (err) return authtools.handleError(res, err)
@@ -53,7 +53,7 @@ module.exports = function(opts){
     }
   })
 
-  router.set('/v1/auth/login', {
+  router.set('/auth/v1/login', {
     POST:function(req, res){
       httpTools.pipeJSON(req, function(err, data){
         if (err) return authtools.handleError(res, err)
@@ -73,7 +73,7 @@ module.exports = function(opts){
     }
   })
 
-  router.set('/v1/auth/details', {
+  router.set('/auth/v1/details', {
     POST:function(req, res){
       httpTools.pipeJSON(req, function(err, data){
         if (err) return authtools.handleError(res, err)

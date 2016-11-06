@@ -37,7 +37,7 @@ Name | CLI | ENV | Field | Required | Default
 Scheme | --scheme | SCHEME | bind_scheme | | http
 Hostname | --hostname | HOSTNAME | bind_hostname | yes |
 Port | --port | PORT | bind_port | | 80
-Mount Path | --mount-path | MOUNT_PATH | bind_path_v1 | | /v1/auth
+Mount Path | --mount-path | MOUNT_PATH | bind_path_v1 | | /auth/v1
 Success Redirect | --success-redirect | SUCCESS_REDIRECT | success_redirect | | /
 Failure Redirect | --failure-redirect | FAILURE_REDIRECT | failure_redirect | | /login
 Cookie Secret | --cookie-secret | COOKIE_SECRET | cookiesecret | | apples
@@ -88,7 +88,7 @@ var authHandler = passportService({
 
 // you can use any server framework here (e.g. express or hapi)
 var server = http.createServer(function(req, res){
-  if(req.url.indexOf('/v1/auth')==0){
+  if(req.url.indexOf('/auth/v1')==0){
     authHandler(req, res)
   }
   else{
@@ -356,7 +356,7 @@ const secret = process.env.TOKEN_SECRET
 // the connection details for our auth endpoint
 const auth_host = 'myauthservice.local'
 const auth_port = 80
-const auth_path = '/v1/auth'
+const auth_path = '/auth/v1'
 
 // we want to protect this handler with JWT tokens
 var handler = function(req, res){
@@ -402,7 +402,7 @@ var wrappedHandler = Access({
 
 For session access any client that can use cookies can make requests (e.g. a browser or the `request` module using `cookie-jar=true`)
 
-Obviously that client must have made a request to `/v1/auth/login` to get the cookie before making requests to protected routes.
+Obviously that client must have made a request to `/auth/v1/login` to get the cookie before making requests to protected routes.
 
 ## tests
 

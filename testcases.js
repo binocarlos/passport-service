@@ -28,7 +28,7 @@ function checkNoLogin(opts){
   opts = opts || {}
   checkOpts(opts, standardOpts.concat(['url']))
 
-  opts.tape(getTestTitle('no login for /v1/auth/status', opts), function (t) {
+  opts.tape(getTestTitle('no login for /auth/v1/status', opts), function (t) {
 
     opts.request({
       url:opts.url,
@@ -59,7 +59,7 @@ function checkHasLogin(opts){
   opts = opts || {}
   checkOpts(opts, standardOpts.concat(['url', 'email', 'state']))
 
-  opts.tape(getTestTitle('has login for /v1/auth/status', opts), function (t) {
+  opts.tape(getTestTitle('has login for /auth/v1/status', opts), function (t) {
 
     opts.request({
       url:opts.url,
@@ -96,7 +96,7 @@ function doLogin(opts){
   opts = opts || {}
   checkOpts(opts, standardOpts.concat(['url', 'email', 'password', 'state']))
 
-  opts.tape(getTestTitle('can login to /v1/auth/login', opts), function (t) {
+  opts.tape(getTestTitle('can login to /auth/v1/login', opts), function (t) {
 
     opts.request({
       url:opts.url,
@@ -140,7 +140,7 @@ function doLogout(opts){
   opts = opts || {}
   checkOpts(opts, standardOpts.concat(['url', 'state']))
 
-  opts.tape(getTestTitle('can logout at /v1/auth/logout', opts), function (t) {
+  opts.tape(getTestTitle('can logout at /auth/v1/logout', opts), function (t) {
 
     opts.request({
       url:opts.url,
@@ -174,7 +174,7 @@ function checkDetails(opts){
   opts = opts || {}
   checkOpts(opts, standardOpts.concat(['url', 'statusurl']))
 
-  opts.tape(getTestTitle('can POST /v1/auth/details', opts), function (t) {
+  opts.tape(getTestTitle('can POST /auth/v1/details', opts), function (t) {
 
     opts.request({
       url:opts.url,
@@ -198,7 +198,7 @@ function checkDetails(opts){
     })
   })
 
-  opts.tape(getTestTitle('can GET details from /v1/auth/status', opts), function (t) {
+  opts.tape(getTestTitle('can GET details from /auth/v1/status', opts), function (t) {
 
     opts.request({
       url:opts.statusurl,
@@ -230,7 +230,7 @@ function checkSignup(opts){
   opts = opts || {}
   checkOpts(opts, standardOpts.concat(['url', 'email', 'password']))
 
-  opts.tape(getTestTitle('can signup to /v1/auth/register', opts), function (t) {
+  opts.tape(getTestTitle('can signup to /auth/v1/register', opts), function (t) {
 
     opts.request({
       url:opts.url,

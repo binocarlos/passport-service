@@ -74,7 +74,7 @@ function sessionAccessControl(opts, handler){
       // authorize the user (even if we don't have on it's up to the authz fn)
       authorizor(req, {
         context:'session',
-        // we send the results from /v1/auth/status to the authorizer
+        // we send the results from /auth/v1/status to the authorizer
         data:loginPacket
       }, function(err, access){
 

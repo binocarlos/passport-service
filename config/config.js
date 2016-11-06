@@ -30,7 +30,7 @@ const bind_hostname = utils.getenv('HOSTNAME', null, {
   required:true
 })
 const bind_port = utils.getenv('PORT', 80)
-const bind_path_v1 = utils.getenv('MOUNT_PATH', '/v1/auth')
+const bind_path_v1 = utils.getenv('MOUNT_PATH', '/auth/v1')
 
 // the paths to use for redirection
 const success_redirect = utils.getenv('SUCCESS_REDIRECT', '/')
