@@ -83,6 +83,11 @@ exports.status = function (req, res) {
   })
 }
 
+var TOP_LEVEL_USER_FIELDS = {
+  name:true,
+  email:true,
+  accesslevel:true
+}
 
 // get info for the user
 exports.details = function (req, res) {
@@ -93,9 +98,21 @@ exports.details = function (req, res) {
   
   loadUser(req.user._id, function(err, profile){
     if (err) return authtools.handleError(res, err)
-    profile.set({
-      data:data
+
+    var updateObj = {
+      data:{}
+    }
+
+    Object.keys(data || {}).forEach(function(key){
+      if(TOP_LEVEL_USER_FIELDS[key]){
+        updateObj[key] = data[key]
+      }
+      else{
+        updateObj.data[key] = data[key]
+      }
     })
+    
+    profile.set(updateObj)
     profile.save(function(err, newdata){
       if (err) return authtools.handleError(res, err)
       res.json({
