@@ -13,7 +13,7 @@ const oAuthTypes = [
   'google'
 ];
 
-function factory(mongoose){
+function factory(mongoose, modelname){
 
   const Schema = mongoose.Schema
 
@@ -81,7 +81,7 @@ function factory(mongoose){
   }, 'Email must be valid email address');
 
   UserSchema.path('email').validate(function (email, fn) {
-    const User = mongoose.model('User');
+    const User = mongoose.model(modelname || 'User');
     if (this.skipValidation()) fn(true);
 
     // Check only when it is a new user or when email field is modified
