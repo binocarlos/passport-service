@@ -201,4 +201,4 @@ UserSchema.statics = {
   }
 };
 
-mongoose.model('User', UserSchema);
+module.exports = UserSchema
