@@ -1,6 +1,6 @@
 {
   "name": "passport-service",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A HTTP auth service using passport and connecting to Mongo",
   "main": "index.js",
   "scripts": {
