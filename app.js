@@ -8,7 +8,7 @@ const Connection = require('./connection')
 
 const config = require('./config/config')
 const UserSchema = require('./app/models/user')
-mongoose.model('User', UserSchema);
+mongoose.model('User', UserSchema(mongoose));
 
 const PassportConfig = require('./config/passport')
 const ExpressConfig = require('./config/express')
