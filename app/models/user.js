@@ -80,7 +80,9 @@ function factory(mongoose, modelname){
     return isValidEmail(email)
   }, 'Email must be valid email address');
 
-  UserSchema.path('email').validate(function (email, fn) {
+  UserSchema.path('email').validate(function (arg) {
+      return new Promise(resolve => {
+          (function (email, fn) {
     const User = mongoose.model(modelname || 'User');
     if (this.skipValidation()) fn(true);
 
@@ -90,6 +92,8 @@ function factory(mongoose, modelname){
         fn(!err && users.length === 0);
       });
     } else fn(true);
+  }).call(this, arg, resolve);
+      });
   }, 'Email already exists');
 
 
