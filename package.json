@@ -23,7 +23,7 @@
     "hyperrequest": "^0.1.1",
     "is-valid-email": "0.0.2",
     "jsonwebtoken": "^5.7.0",
-    "mongoose": "^4.4.12",
+    "mongoose": "^5.0.0",
     "morgan": "^1.7.0",
     "passport": "~0.3.2",
     "passport-facebook": "~2.0.0",

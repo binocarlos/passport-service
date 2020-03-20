@@ -80,16 +80,20 @@ function factory(mongoose, modelname){
     return isValidEmail(email)
   }, 'Email must be valid email address');
 
-  UserSchema.path('email').validate(function (email, fn) {
-    const User = mongoose.model(modelname || 'User');
-    if (this.skipValidation()) fn(true);
+  UserSchema.path('email').validate(function (arg) {
+    return new Promise(resolve => {
+      (function (email, fn) {
+        const User = mongoose.model(modelname || 'User');
+        if (this.skipValidation()) fn(true);
 
-    // Check only when it is a new user or when email field is modified
-    if (this.isNew || this.isModified('email')) {
-      User.find({ email: email }).exec(function (err, users) {
-        fn(!err && users.length === 0);
-      });
-    } else fn(true);
+        // Check only when it is a new user or when email field is modified
+        if (this.isNew || this.isModified('email')) {
+          User.find({ email: email }).exec(function (err, users) {
+            fn(!err && users.length === 0);
+          });
+        } else fn(true);
+      }).call(this, arg, resolve);
+    });
   }, 'Email already exists');
 
 
